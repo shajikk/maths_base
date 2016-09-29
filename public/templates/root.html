@@ -1,0 +1,22 @@
+    <div ng-controller="rootController as ctrl">
+
+       <!--table-controls obj="ctrl"></table-controls>
+
+        <table class="table table-bordered table-hover table-style">
+          
+             <thead>
+                 <tr> <th> <table-sort obj="ctrl" field="chip" text="Chip name" link="#/" ></table-sort> </th></tr>
+             </thead>
+
+            <tr ng-repeat="d in ctrl.data">
+               <td> <a ng-href="#/chip/none/{{d}}">{{d}}</a> </td>
+            </tr>
+
+        </table>
+
+       <table-pager obj="ctrl"></table-pager-->
+       <h2> Nida - Welcome to your practice session. Let us have some fun !!! <h2>
+       <h2> Click below to start <h2>
+       <button type="button" class="btn btn-success" ng-click="ctrl.Next()">Start</button>
+
+    </div>

@@ -1,0 +1,61 @@
+<!------ Show tags, select logic ----->
+
+<form class="form-horizontal"> 
+<div class="form-group"> 
+
+   <label class="control-label col-sm-2">Select tag</label> 
+   
+   <div class="btn-group col-sm-2 " dropdown>
+       <button type="button"
+               class="btn btn-primary dropdown-toggle"
+               dropdown-toggle>
+           {{obj.chip_type}} <span class="caret"></span>
+       </button>
+   
+       <ul class="dropdown-menu" role="menu">
+   
+           <li>
+               <a ng-click="obj.chip_type='none'; obj.tag_active = false; obj.go()">none</a>
+           </li>
+
+           <li ng-repeat="opts in obj.tag_opts">
+               <a ng-click="obj.chip_type=opts; obj.tag_active = true; obj.go()">{{opts}}</a>
+           </li>
+   
+           <li class="divider"></li>
+   
+           <li>
+               <a ng-click="obj.edit_tag = !obj.edit_tag">Edit tags</a>
+           </li>
+   
+       </ul>
+   </div>
+   
+   <div class="col-sm-4"></div>
+
+</div>
+</form>
+
+<!------ Edit tags, select logic ----->
+<div ng-show="obj.edit_tag">
+  <form class="form-horizontal">
+  <div class="form-group">
+  
+   <div class="col-sm-2">
+     <input class="form-control" type="text" value="ItemName" ng-model="newItemName"
+      placeholder="name of new tag">
+   </div>
+  
+   <button  class="btn btn-default btn-sm col-sm-1" ng-click="obj.save_tag(newItemName)">Add tag</button>          
+   <div class="col-sm-6"></div>
+  </div>
+  </form>
+  
+  <ul class="list-unstyled"> 
+  <li ng-repeat="item in obj.tag_opts">
+     <button ng-click="obj.tag_opts.splice($index, 1)" type="button" class="btn btn-default btn-xs">x</button> <a>{{item}}</a>
+  </li>
+  </ul>
+  <button  ng-click="obj.edit_tag=false; obj.save_tag_to_db()" type="button" class="btn btn-default btn-xs">ok</button>
+  <button  ng-click="obj.edit_tag=false" type="button" class="btn btn-default btn-xs">cancel</button>
+</div>

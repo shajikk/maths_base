@@ -1,0 +1,56 @@
+    <div ng-controller="runController as ctrl">
+
+       <h2>{{ctrl.chip_name}} // {{ctrl.block_name}} // {{ctrl.run_name}} </h2>
+
+        <div class="panel panel-default" ng-repeat="inst in ctrl.instances" >
+
+          <div class="panel-heading">{{ctrl.obj_holder[inst].name}}</div>
+
+          <div class="panel-body"> 
+            <table class="table table-bordered table-hover table-style">
+            
+                 <thead>
+                     <tr>
+                         <th class="col-sm-7"> Cover name </th>
+                         <th class="col-sm-1"> % </th>
+                         <th class="col-sm-1"> stat </th>
+                         <th class="col-sm-1"> Waived </th>
+                         <th class="col-sm-1"><div class="text-center">Comment</div></th>
+                         <th class="col-sm-1">History</th>
+                     </tr>
+                 </thead>
+            
+                <tr ng-repeat="d in ctrl.obj_holder[inst].children">
+            
+                   <td>
+                       <div class="row">
+                              <div class="col-sm-12" ng-if="ctrl.obj_holder[d].attr != ''">
+                                 <li ng-class="ctrl.obj_holder[d].attr">{{ctrl.obj_holder[d].name}} [ID:{{ctrl.obj_holder[d].sig}}], [ch:{{ctrl.obj_holder[d].children}}], [pa: {{ctrl.obj_holder[d].parents}}]</li>
+                              </div>
+                              <div class="col-sm-12" ng-if="ctrl.obj_holder[d].attr == ''">{{ctrl.obj_holder[d].name}}</div>
+                       <div> 
+                   </td>
+            
+                   <td><div ng-class="{'full_percent': ctrl.obj_holder[d].data[0] == '100%', 'zero_percent' : ctrl.obj_holder[d].data[0] == '0%'}">{{ctrl.obj_holder[d].data[0]}}</div></td>
+                   <td>{{ctrl.obj_holder[d].data[1]}}</td>
+            
+                   <td>
+                       <div ng-class="{'chk_box_class_good': ctrl.obj_holder[d].selected}">
+                         <input type="checkbox" 
+                                value="{{ctrl.obj_holder[d].id}}" 
+                                ng-model="ctrl.obj_holder[d].selected" 
+                                ng-click="ctrl.cb_update(ctrl.obj_holder[d].id, ctrl.obj_holder[d].selected)">
+                         {{ctrl.cbstat(ctrl.obj_holder[d].selected)}}
+                       </div>
+                   </td>
+            
+                   <td><edit-in-place obj="ctrl" id="ctrl.obj_holder[d].id" value="ctrl.obj_holder[d].comment"></edit-in-place></td>
+            
+                   <td><a ng-click="ctrl.History(ctrl.obj_holder[d])">click</a></td>
+                </tr>
+            
+            </table>
+          </div>
+        </div>
+
+    </div>

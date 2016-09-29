@@ -1,0 +1,35 @@
+    <div ng-controller="blockController as ctrl">
+
+
+       <h2>{{ctrl.chip_name}} // {{ctrl.block_name}} ({{ctrl.chip_type}}) </h2>
+
+       <table-controls obj="ctrl"></table-controls>
+
+        <table class="table table-bordered table-hover table-style">
+
+             <thead>
+                 <tr>
+                     <th class="col-sm-5">
+                        <table-sort obj="ctrl" field="run" text="Run name" link="#/chip/{{ctrl.chip_type}}/{{ctrl.chip_name}}/{{ctrl.block_name}}"></table-sort>
+                     </th>
+                     <th class="col-sm-4">
+                        <table-sort obj="ctrl" field="date" text="Date" link="#/chip/{{ctrl.chip_type}}/{{ctrl.chip_name}}/{{ctrl.block_name}}"></table-sort>
+                     </th>
+                     <th class="col-sm-3"> Tag </th>
+                 </tr>
+             </thead>
+
+            <tr ng-repeat="d in ctrl.data">
+
+               <td><a ng-href="#/chip/{{ctrl.chip_type}}/{{ctrl.chip_name}}/{{ctrl.block_name}}/{{d.name}}">{{d.name}}</a></td>
+
+               <td>{{d.date}} </td>
+
+               <!--td> <a>{{d.tag.join()}}</a> </td-->
+               <td><edit-in-place-tag obj="ctrl" id="d.id" value="d.tag"></edit-in-place-tag></td>
+
+            </tr>
+
+       <table-pager obj="ctrl"></table-pager>
+
+    </div>

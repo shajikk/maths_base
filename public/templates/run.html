@@ -1,0 +1,60 @@
+    <div ng-controller="runController as ctrl">
+       <h3>Question {{ctrl.cur_count}} </h3>
+       <h3>Solve below:</h3>
+
+       <div ng-if="ctrl.operation == 'mul'">
+	  <div class=big >{{ctrl.value1}} x {{ctrl.value2}} =
+		  <form ng-submit="ctrl.Submit()">
+		  <input name="ans" type="text" class="field_w" ng-model="ctrl.answer">
+                  </form>
+	  </div>
+       </div>
+
+       <div ng-if="ctrl.operation == 'add'">
+	  <div class=big >{{ctrl.value1}} + {{ctrl.value2}} =
+		  <form ng-submit="ctrl.Submit()">
+		  <input name="ans" type="text" class="field_w" ng-model="ctrl.answer">
+                  </form>
+	  </div>
+       </div>
+
+       <div ng-if="ctrl.operation == 'sub'">
+	  <div class=big >{{ctrl.value1}} - {{ctrl.value2}} =
+		  <form ng-submit="ctrl.Submit()">
+		  <input name="ans" type="text" class="field_w" ng-model="ctrl.answer">
+                  </form>
+	  </div>
+       </div>
+
+       <div ng-if="ctrl.operation == 'div'">
+          <div class=big >{{ctrl.result}} &divide; {{ctrl.value2}} =
+		  <form ng-submit="ctrl.Submit()">
+		  <input name="ans" type="text" class="field_w" ng-model="ctrl.answer">
+                  </form>
+	  </div>
+       </div>
+
+       <div ng-if="ctrl.operation == 'round'">
+	       <h3>Round to nearest </h3> <h2> {{ctrl.value2}}</h2>
+          <div class=big >{{ctrl.value1}} =
+		  <form ng-submit="ctrl.Submit()">
+		  <input name="ans" type="text" class="field_w" ng-model="ctrl.answer">
+                  </form>
+	  </div>
+       </div>
+
+       <button type="button" class="btn btn-success" ng-click="ctrl.Submit()">Submit</button>
+
+       <div ng-if="ctrl.state == 'wrong'">
+          <div class=big_red >Wrong !!! Try again.. </div>
+       </div>
+
+
+       <audio id="audio1">
+	  <source src="CHINA_1.mp3"></source>
+       </audio>
+
+       <audio id="audio2">
+	  <source src="Beep.mp3"></source>
+       </audio>
+    </div>

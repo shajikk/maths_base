@@ -1,0 +1,32 @@
+    <div ng-controller="chipController as ctrl">
+
+       <h2>{{ctrl.chip_name}}</h2>
+
+       <table-controls obj="ctrl"></table-controls>
+
+        <table class="table table-bordered table-hover table-style">
+
+             <thead>
+                 <tr>
+                     <th class="col-sm-6">
+                        <table-sort obj="ctrl" field="block" text="block name" link="#/chip/def/{{ctrl.chip_name}}"></table-sort>
+                     </th>
+                     <th class="col-sm-6">
+		        Owners
+                     </th>
+                 </tr>
+             </thead>
+
+            <tr ng-repeat="d in ctrl.data">
+
+               <td><a ng-href="#/chip/def/{{ctrl.chip_name}}/{{d.name}}">{{d.name}}</a></td>
+               <td><edit-in-place obj="ctrl" id="d.id" value="d.owners"></edit-in-place></td>
+
+            </tr>
+
+        </table>
+
+       <table-pager obj="ctrl"></table-pager>
+
+
+    </div>

@@ -1,0 +1,32 @@
+<div ng-class="{invisible: flag, visible : !flag}" ng-click="flag=true; old = value.slice(0)"> 
+  <div class=backgroundcolor> {{value.join(", ")}} </div>
+  <div ng-class="{invisible: value.length != 0, visible : value.length == 0 }"><button type="button" class="btn btn-default btn-xs">edit</button></div>
+</div>
+
+<div ng-class="{visible: flag, invisible: !flag}">
+
+
+  <form class="form-horizontal">
+  <div class="form-group">
+  
+   <div class="col-sm-10">
+     <input class="form-control input-sm" type="text" value="ItemName" ng-model="newItemName"
+      placeholder="name of new tag">
+   </div>
+  
+   <button  class="btn btn-default btn-xs col-sm-2" ng-click="check_and_push(newItemName, value)">Add</button>          
+   </div>
+  </form>
+  
+  <ul class="list-unstyled"> 
+  <li ng-repeat="item in value">
+     <button ng-click="value.splice($index, 1)" type="button" class="btn btn-default btn-xs">x</button> <a>{{item}}</a>
+  </li>
+  </ul>
+
+  <div>
+    <button  type="button" class="btn btn-default btn-xs" ng-click="flag=false; obj.submit(id, value)">ok</button>
+    <button  type="button" class="btn btn-default btn-xs" ng-click="flag=false; value = old">cancel</button>
+  </div>
+
+</div>

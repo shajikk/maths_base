@@ -1,0 +1,14 @@
+.big {
+    font-family: verdana, arial, sans-serif;
+    font-size:70px;
+}
+
+.big_red {
+    font-family: verdana, arial, sans-serif;
+    font-size:50px;
+    color: red;
+}
+
+.field_w {
+    width: 460px;
+}

@@ -1,0 +1,17 @@
+<div ng-class="{invisible: flag, visible : !flag}" ng-click="flag=true; old = value"> 
+  <div class=backgroundcolor> {{value}} </div>
+  <div ng-class="{invisible: value, visible : !value}"><button type="button" class="btn btn-default btn-xs">edit</button></div>
+</div>
+
+<div ng-class="{visible: flag, invisible: !flag}">
+  <form class="form-inline">
+
+     <textarea class="form-control" rows="1" ng-model="value" ng-keyup="Expand($event)"></textarea></input>
+
+     <div>
+       <input type="submit" ng-click="flag=false; obj.submit(id, value)"  value="OK" />
+       <input type="submit" ng-click="flag=false; value = old" value="cancel" />
+     </div>
+
+  </form>
+</div>
