@@ -10,6 +10,19 @@
 	  </div>
        </div>
 
+       <div ng-if="ctrl.operation == 'tdm'">
+
+          <div class="jumbotron">
+	     <p ng-bind-html="ctrl.msg"></p>
+          </div>
+
+	  <div class=big >{{ctrl.value1}} x {{ctrl.value2}} =
+		  <form ng-submit="ctrl.Submit()">
+		  <input name="ans" type="text" class="field_w" ng-model="ctrl.answer">
+                  </form>
+	  </div>
+       </div>
+
        <div ng-if="ctrl.operation == 'add'">
 	  <div class=big >{{ctrl.value1}} + {{ctrl.value2}} =
 		  <form ng-submit="ctrl.Submit()">

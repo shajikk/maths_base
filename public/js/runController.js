@@ -18,6 +18,7 @@
       that.value2  = d.data.v2;
       that.result  = d.data.ans;
       that.operation  = d.data.op;
+      that.msg        = d.data.msg;
     });
 
     this.state   = 'right';
@@ -126,6 +127,34 @@
 		    correct    : this.result, 
 		    value1     : this.value1, 
 		    value2     : this.value2, 
+		    status     : "RIGHT",
+	          };
+
+
+        if (this.answer != this.result) {
+          this.state = 'wrong';
+	  val.status = "WRONG";
+	  var audio = document.getElementById("audio1");
+	  audio.play();
+	  status = 0;
+        }
+
+        $http.post("/result", JSON.stringify(val)).success(function(data, status) {
+           alert("posted : " + data);
+        });
+
+      }
+
+
+      if (this.operation == 'tdm') { // division
+
+        var val = { 
+		    operation  : this.operation, 
+		    answer_got : this.answer, 
+		    correct    : this.result, 
+		    value1     : this.value1, 
+		    value2     : this.value2, 
+		    msg        : this.msg, 
 		    status     : "RIGHT",
 	          };
 
